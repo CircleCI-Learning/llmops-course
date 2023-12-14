@@ -28,7 +28,7 @@ Step 1:{delimiter} First identify the category user is asking about from the fol
 
 Step 2:{delimiter} Determine the subjects to generate questions about. The list of topics are below:
 
-{quiz_information_bank}
+{quiz_bank}
 
 Pick up to two subjects that fit the user's category.
 
