@@ -15,22 +15,23 @@ def create_eval_chain(context, agent_response):
   Here is the data:
     [BEGIN DATA]
     ************
-    [Question Bank]: {context}
+    [Quiz Bank]: {context}
     ************
     [Quiz]: {agent_response}
     ************
     [END DATA]
 
-Compare the content of the submission with the question bank using the following steps
+Compare the content of the submission with the quiz bank using the following steps
 
-1. Review the question bank carefully. These are the only facts the quiz can reference
-2. Compare the quiz to the question bank.
+1. Review the quiz bank carefully. These are the only facts the quiz can reference
+2. Compare the quiz to the quiz bank.
 3. Ignore differences in grammar or punctuation
 4. If a fact is in the quiz, but not in the question bank the quiz if bad.
 
 Remember, the quizzes need to only include facts the assistant is aware of. It is dangerous to allow made up facts.
 
 Output Y if the quiz only contains facts from the question bank, output N if it contains facts that are not in the question bank.
+If the quiz includes a refusal to generate a quiz output Y.
 """
     eval_prompt = ChatPromptTemplate.from_messages(
         [
