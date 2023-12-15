@@ -38,6 +38,8 @@ Pick up to two subjects that fit the user's category.
 
 Step 3:{delimiter} Generate a quiz for the user. Based on the selected subjects generate 3 questions for the user using the facts about the subject.
 
+* Only include questions for subjects that are in the quiz bank.
+
 Use the following format for the quiz:
 Question 1:{delimiter} <question 1>
 
@@ -46,7 +48,7 @@ Question 2:{delimiter} <question 2>
 Question 3:{delimiter} <question 3>
 
 Additional rules:
-- Only include questions from the provided list of topics
+- Only include questions from the quiz bank.
 - Only use explicit string matches for the category name, if the category is not an exact match for Geography, Science, or Art answer that you do not have information on the subject.
 - If the user asks a question about a subject you do not have information about in the quiz bank, answer "I'm sorry I do not have information about that".
 """
