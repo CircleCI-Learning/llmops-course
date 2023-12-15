@@ -1,17 +1,16 @@
-
 import pandas as pd
-from app import assistant_chain, quiz_information_bank
+from app import assistant_chain, quiz_bank
 from IPython.display import display, HTML
 
-from langchain.prompts                import ChatPromptTemplate
-from langchain.chat_models            import ChatOpenAI
-from langchain.schema.output_parser   import StrOutputParser
+from langchain.prompts import ChatPromptTemplate
+from langchain.chat_models import ChatOpenAI
+from langchain.schema.output_parser import StrOutputParser
 
 eval_system_prompt = """You are an assistant that evaluates how well the quiz assistant
     creates quizzes for a user by looking at the set of facts available to the assistant.
     Your primary concern is making sure that ONLY facts available are used. Helpful quizzes only contain facts in the
     test set"""
-  
+
 eval_user_message = """You are evaluating a generated quiz based on the context that the assistant uses to create the quiz.
   Here is the data:
     [BEGIN DATA]
@@ -45,54 +44,74 @@ Explanation: <Explanation>
 
 # In a real application you would load your dataset from a file or logging tool.
 # Here we have a mix of examples with slightly different phrasing that our quiz application can support
-# and things we don't support. 
+# and things we don't support.
 dataset = [
-  {"input": "I'm trying to learn about science, can you give me a quiz to test my knowledge",
-   "response": "science",
-   "subjects": ["davinci", "telescope", "physics", "curie"]},
-  {"input": "I'm an geography expert, give a quiz to prove it?",
-   "response": "geography",
-   "subjects": ["paris", "france", "louvre"]},
-   {"input": "Quiz me about Italy",
-   "response": "geography",
-   "subjects": ["rome", "alps", "sicily"]
-   },
+    {
+        "input": "I'm trying to learn about science, can you give me a quiz to test my knowledge",
+        "response": "science",
+        "subjects": ["davinci", "telescope", "physics", "curie"],
+    },
+    {
+        "input": "I'm an geography expert, give a quiz to prove it?",
+        "response": "geography",
+        "subjects": ["paris", "france", "louvre"],
+    },
+    {
+        "input": "Quiz me about Italy",
+        "response": "geography",
+        "subjects": ["rome", "alps", "sicily"],
+    },
 ]
 
+
 def create_eval_chain():
-  eval_prompt = ChatPromptTemplate.from_messages([
-      ("system", eval_system_prompt),
-      ("human", eval_user_message),
-  ])
+    eval_prompt = ChatPromptTemplate.from_messages(
+        [
+            ("system", eval_system_prompt),
+            ("human", eval_user_message),
+        ]
+    )
 
-  return eval_prompt | ChatOpenAI(model="gpt-3.5-turbo", temperature=0) | StrOutputParser()
+    return (
+        eval_prompt
+        | ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
+        | StrOutputParser()
+    )
 
-def evaluate_dataset(dataset, quiz_bank assistant, evaluator):
-  eval_results = []
-  for row in dataset:
-    eval_result = {}
-    user_input = row["input"]
-    answer = assistant.invoke({"question": user_input})
-    eval_response = evaluator.invoke({"context": quiz_bank, "agent_response": answer})
-    
-    eval_result["input"] = user_input
-    eval_result["output"] = answer
-    eval_result["grader_response"] = eval_response
-    eval_results.append(eval_result)
-  return eval_results
+
+def evaluate_dataset(dataset, quiz_bank, assistant, evaluator):
+    eval_results = []
+    for row in dataset:
+        eval_result = {}
+        user_input = row["input"]
+        answer = assistant.invoke({"question": user_input})
+        eval_response = evaluator.invoke(
+            {"context": quiz_bank, "agent_response": answer}
+        )
+
+        eval_result["input"] = user_input
+        eval_result["output"] = answer
+        eval_result["grader_response"] = eval_response
+        eval_results.append(eval_result)
+    return eval_results
+
 
 def report_evals():
-  assistant = assistant_chain()
-  model_graded_evaluator = create_eval_chain()
-  eval_results = evaluate_dataset(dataset, assistant, model_graded_evaluator)
-  df = pd.DataFrame(eval_results)
-  ## clean up new lines to be html breaks
-  df_html = df.to_html().replace("\\n","<br>")
-  with open("/tmp/eval_results.html", "w") as f:
-    f.write(df_html)
+    assistant = assistant_chain()
+    model_graded_evaluator = create_eval_chain()
+    eval_results = evaluate_dataset(
+        dataset, quiz_bank, assistant, model_graded_evaluator
+    )
+    df = pd.DataFrame(eval_results)
+    ## clean up new lines to be html breaks
+    df_html = df.to_html().replace("\\n", "<br>")
+    with open("/tmp/eval_results.html", "w") as f:
+        f.write(df_html)
+
 
 def main():
-  report_evals()
+    report_evals()
+
 
 if __name__ == "__main__":
-  main()
+    main()
