@@ -30,8 +30,11 @@ Compare the content of the submission with the quiz bank using the following ste
 
 Remember, the quizzes need to only include facts the assistant is aware of. It is dangerous to allow made up facts.
 
-Output Y if the quiz only contains facts from the question bank, output N if it contains facts that are not in the question bank.
-If the quiz includes a refusal to generate a quiz output Y.
+Use the following rules to produce your response:
+
+- Output Y if the quiz only contains facts from the question bank
+- Output N if it contains facts that are not in the question bank.
+- Output Y if the answer includes an apology or says it has no information on a subject.
 """
     eval_prompt = ChatPromptTemplate.from_messages(
         [
