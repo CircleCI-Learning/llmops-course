@@ -2,6 +2,7 @@ from app import assistant_chain
 from langchain.prompts import ChatPromptTemplate
 from langchain.chat_models import ChatOpenAI
 from langchain.schema.output_parser import StrOutputParser
+import pytest
 
 
 def create_eval_chain(
@@ -34,6 +35,16 @@ Output Y if the response is a quiz, output N if the response does not look like 
     )
 
     return eval_prompt | llm | output_parser
+
+
+@pytest.fixture
+def known_bad_result():
+    return "There are lots of interesting facts. Tell me more about what you'd like to know"
+
+
+@pytest.fixture
+def quiz_request():
+    return "Give me a quiz about Geography"
 
 
 def test_model_graded_eval(quiz_request):
