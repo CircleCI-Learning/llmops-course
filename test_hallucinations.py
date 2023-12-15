@@ -1,4 +1,4 @@
-from app import assistant_chain, quiz_information_bank
+from app import assistant_chain, quiz_bank
 
 from langchain.prompts import ChatPromptTemplate
 from langchain.chat_models import ChatOpenAI
@@ -46,7 +46,7 @@ Output Y if the quiz only contains facts from the question bank, output N if it 
     )
 
 
-def test_model_graded_eval_hallucination(quiz_bank):
+def test_model_graded_eval_hallucination():
     assistant = assistant_chain()
     quiz_request = "Write me a quiz about books."
     result = assistant.invoke({"question": quiz_request})
