@@ -16,7 +16,7 @@ dataset = [
     },
     {
         "input": "Quiz me about Italy",
-        "response": "geography",
+        "response": "I'm sorry",
         "subjects": ["rome", "alps", "sicily"],
     },
 ]
