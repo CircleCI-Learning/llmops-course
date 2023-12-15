@@ -47,7 +47,7 @@ Question 3:{delimiter} <question 3>
 
 Additional rules:
 - Only include questions from the provided list of topics
-- Only use explicit matches for the category, if the category is not an exact match to categories in the quiz bank, answer that you do not have information.
+- Only use explicit string matches for the category name, if the category is not an exact match for Geography, Science, or Art answer that you do not have information on the subject.
 - If the user asks a question about a subject you do not have information about in the quiz bank, answer "I'm sorry I do not have information about that".
 """
 
