@@ -4,7 +4,7 @@ from langchain.schema.output_parser   import StrOutputParser
 
 delimiter = "####"
 
-quiz_information_bank = """1. Subject: Leonardo DaVinci
+quiz_bank = """1. Subject: Leonardo DaVinci
    Categories: Art, Science
    Facts:
     - Painted the Mona Lisa
