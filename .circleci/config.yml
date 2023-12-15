@@ -6,18 +6,22 @@ parameters:
   eval-mode:
     type: string
     default: "commit"
-
+    
 workflows:
-  evaluate-app:  
+  evaluate-app: 
     jobs:
-      - run-hello-world:
+      - run-commit-evals:
           context:
             - dl-ai-courses
+            
 jobs:
-  run-hello-world: 
+  run-commit-evals:
     docker:
-      - image: cimg/python:3.10.5
+      - image: cimg/python:3.10.5 
     steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
       - run:
-          name: Print Hello World
-          command: echo "Hello World!"
+          name: Run assistant evals.
+          command: python -m pytest test_assistant.py
