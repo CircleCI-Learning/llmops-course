@@ -64,7 +64,7 @@ Additional rules:
 def assistant_chain(
     system_message=system_message,
     human_template="{question}",
-    llm=ChatOpenAI(model="gpt-3.5-turbo", temperature=0),
+    llm=ChatOpenAI(model="gpt-3.5-turbo-16k", temperature=0),
     output_parser=StrOutputParser(),
 ):
     chat_prompt = ChatPromptTemplate.from_messages(
