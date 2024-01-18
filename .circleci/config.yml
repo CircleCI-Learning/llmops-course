@@ -6,18 +6,21 @@ parameters:
   eval-mode:
     type: string
     default: "commit"
-    
+
 workflows:
-  evaluate-app: 
+  evaluate-app:  
     jobs:
       - run-commit-evals:
           context:
             - dl-ai-courses
-            
+      - run-pre-release-evals:
+          context:
+            - dl-ai-courses
+
 jobs:
-  run-commit-evals:
+  run-commit-evals:  
     docker:
-      - image: cimg/python:3.10.5 
+      - image: cimg/python:3.10.5
     steps:
       - checkout
       - python/install-packages:
@@ -25,3 +28,13 @@ jobs:
       - run:
           name: Run assistant evals.
           command: python -m pytest test_assistant.py
+  run-pre-release-evals:  
+    docker:
+      - image: cimg/python:3.10.5
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
+      - run:
+          name: Run release evals.
+          command: python -m pytest test_release_evals.py
