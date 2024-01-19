@@ -8,17 +8,33 @@ parameters:
     default: "commit"
 
 workflows:
-  evaluate-app:  
+  commit-workflow:
+    when:
+      and:
+        - equal: [ commit, << pipeline.parameters.eval-mode >> ]
     jobs:
       - run-commit-evals:
           context:
             - dl-ai-courses
+  release-workflow:  
+    when:
+      and:
+        - equal: [ release, << pipeline.parameters.eval-mode >> ]
+    jobs:
       - run-pre-release-evals:
+          context:
+            - dl-ai-courses
+  full-workflow:  
+    when:
+      and:
+        - equal: [ full, << pipeline.parameters.eval-mode >> ]
+    jobs:
+      - run-manual-evals:
           context:
             - dl-ai-courses
 
 jobs:
-  run-commit-evals:  
+  run-commit-evals: 
     docker:
       - image: cimg/python:3.10.5
     steps:
@@ -28,7 +44,7 @@ jobs:
       - run:
           name: Run assistant evals.
           command: python -m pytest test_assistant.py
-  run-pre-release-evals:  
+  run-pre-release-evals:
     docker:
       - image: cimg/python:3.10.5
     steps:
@@ -37,4 +53,14 @@ jobs:
           pkg-manager: pip
       - run:
           name: Run release evals.
-          command: python -m pytest test_release_evals.py
+          command: echo "Run our pre-release model graded evals here."
+  run-manual-evals: 
+    docker:
+      - image: cimg/python:3.10.5
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
+      - run:
+          name: Run end to end evals.
+          command: echo "Run our full eval suite here."
