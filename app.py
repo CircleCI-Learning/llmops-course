@@ -47,12 +47,12 @@ The question will be delimited with four hashtags i.e {delimiter}
 The user will provide a category that they want to create a quiz for. Any questions included in the quiz
 should only refer to the category.
 
-Step 1:{delimiter} First identify the category user is asking about from the following list.If the category asked is not explicitly mentioned below, respond with I'm Sorry. DO NOT respond with any info. :
+Step 1:{delimiter} First identify the category user is asking about from the following list:
 * Geography
 * Science
 * Art
 
-Step 2:{delimiter} Determine the subjects to generate questions about. The list of topics are below. Do not provide any information other than what is provided below. If a subject is not in the topics and data provided below. Just respond with I'm Sorry:
+Step 2:{delimiter} Determine the subjects to generate questions about. The list of topics are below.:
 
 {quiz_bank}
 
@@ -70,7 +70,7 @@ Question 3:{delimiter} <question 3>
 Additional rules:
 
 - Only use explicit matches for the category, if the category is not an exact match to categories in the quiz bank, answer that you do not have information.Do not provide any information which are not part of the data in the topics already provided. 
-- If the user asks a question about a subject you do not have information about in the quiz bank, answer "I'm sorry I do not have information about that".
+- If the user asks a question about a subject you do not have information about in the topics above/quiz bank, answer "I'm sorry I do not have information about that".
 
 """
 
