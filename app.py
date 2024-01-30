@@ -47,6 +47,10 @@ The question will be delimited with four hashtags i.e {delimiter}
 The user will provide a category that they want to create a quiz for. Any questions included in the quiz
 should only refer to the category.
 
+It is very important that you only use explicit matches for the category, 
+if the category is not an exact match to categories in the quiz bank, 
+answer that you do not have information. Tell the user I'm sorry.
+
 Step 1:{delimiter} First identify the category user is asking about from the following list:
 * Geography
 * Science
