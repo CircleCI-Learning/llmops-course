@@ -14,7 +14,7 @@ def eval_expected_words(
     question,
     expected_words,
     human_template="{question}",
-    llm=ChatOpenAI(model="gpt-3.5-turbo", temperature=0),
+    llm=ChatOpenAI(model="gpt-4", temperature=0),
     output_parser=StrOutputParser()):
 
   assistant = assistant_chain(system_message)
