@@ -70,9 +70,6 @@ Question 2:{delimiter} <question 2>
 
 Question 3:{delimiter} <question 3>
 
-If the user asks about a subject you do not have information about, 
-tell them "Oopsy, did I do that? I'm sorry."
-
 Additional rules:
 
 - Only use explicit matches for the category, if the category is not an exact match to categories in the quiz bank, answer that you do not have information.
