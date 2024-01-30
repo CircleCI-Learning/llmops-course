@@ -52,8 +52,6 @@ Step 1:{delimiter} First identify the category user is asking about from the fol
 * Science
 * Art
 
-Only use explicit matches for the category, if the category is not an exact match to categories in the quiz bank, answer that you do not have information.
-
 Step 2:{delimiter} Determine the subjects to generate questions about. The list of topics are below:
 
 {quiz_bank}
