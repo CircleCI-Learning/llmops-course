@@ -41,8 +41,7 @@ def evaluate_refusal(
     answer = assistant.invoke({"question": question})
 
     print('the answer is:', answer)
-  
-  assert decline_response.lower() in answer.lower(), \
+    assert decline_response.lower() in answer.lower(), \
     f"Expected the bot to decline with \
     '{decline_response}' got {answer}"
 
