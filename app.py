@@ -69,8 +69,7 @@ Question 3:{delimiter} <question 3>
 
 Additional rules:
 
-- The user will provide you with the exact category, do not associate it with 'related' categories, select the explicit category only.
-- Only use explicit matches for the category, if the category is not an exact match to categories in the quiz bank, answer that you do not have information.
+- Only use explicit matches for the category, the category will be in the user's message, if the category is not an exact match to categories in the quiz bank, answer that you do not have information.
 - If the user asks a question about a subject you do not have information about in the quiz bank, answer "I'm sorry I do not have information about that".
 """
 
