@@ -16,6 +16,9 @@ def eval_expected_words(
     human_template="{question}",
     llm=ChatOpenAI(model="gpt-3.5-turbo", temperature=0),
     output_parser=StrOutputParser()):
+    
+    print(llm)
+    assert llm != None
 
   assistant = assistant_chain(system_message)
   answer = assistant.invoke({"question": question})
@@ -50,9 +53,9 @@ def evaluate_refusal(
   Test cases
 """
 
-def test_openai():
-    llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
-    print(llm)
+# def test_openai():
+#     llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
+#     print(llm)
 
 def test_science_quiz():
   
