@@ -50,6 +50,10 @@ def evaluate_refusal(
   Test cases
 """
 
+def test_openai():
+    llm = ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
+    print(llm)
+
 def test_science_quiz():
   
   question  = "Generate a quiz about science."
