@@ -34,10 +34,11 @@ def evaluate_refusal(
     llm=ChatOpenAI(model="gpt-3.5-turbo", temperature=0),
     output_parser=StrOutputParser()):
     
-  assistant = assistant_chain(human_template, 
-                              system_message,
-                              llm,
-                              output_parser)
+  #   assistant = assistant_chain(human_template, 
+  #                               system_message,
+  #                               llm,
+  #                               output_parser)
+  assistant = assistant_chain(system_message)
   
   answer = assistant.invoke({"question": question})
   print(answer)
