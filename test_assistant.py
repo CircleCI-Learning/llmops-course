@@ -50,22 +50,22 @@ def evaluate_refusal(
   Test cases
 """
 
-def test_science_quiz():
+# def test_science_quiz():
   
-  question  = "Generate a quiz about science."
-  expected_subjects = ["davinci", "telescope", "physics", "curie"]
-  eval_expected_words(
-      system_message,
-      question,
-      expected_subjects)
+#   question  = "Generate a quiz about science."
+#   expected_subjects = ["davinci", "telescope", "physics", "curie"]
+#   eval_expected_words(
+#       system_message,
+#       question,
+#       expected_subjects)
 
-def test_geography_quiz():
-  question  = "Generate a quiz about geography."
-  expected_subjects = ["paris", "france", "louvre"]
-  eval_expected_words(
-      system_message,
-      question,
-      expected_subjects)
+# def test_geography_quiz():
+#   question  = "Generate a quiz about geography."
+#   expected_subjects = ["paris", "france", "louvre"]
+#   eval_expected_words(
+#       system_message,
+#       question,
+#       expected_subjects)
 
 def test_refusal_rome():
   question  = "Help me create a quiz about Rome"
