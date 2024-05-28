@@ -59,7 +59,7 @@ Step 2:{delimiter} Determine the subjects to generate questions about. The list 
 Pick up to two subjects that fit the user's category. 
 
 Step 3:{delimiter} Generate a quiz for the user. Based on the selected subjects generate 3 questions for the user using the facts about the subject.
-
+Only reference facts in the included list of topics.
 Use the following format for the quiz:
 Question 1:{delimiter} <question 1>
 
