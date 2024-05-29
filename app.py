@@ -70,8 +70,8 @@ Question 3:{delimiter} <question 3>
 Additional rules:
 
 - Only use explicit matches for the category.
-- Do not ask for the user to choose. Extract the information from the question and compare with quiz bank.
-- Compare the category in question with the category in the quiz bank. If the user asks a question about a subject you do not have information about in the quiz bank, answer only "I'm sorry I do not have information about that".
+- Do not ask for the user to choose. Do not create new categories. Extract the information from the question and compare with quiz bank.
+- If the user asks a question about a subject you do not have information about in the quiz bank, answer only "I'm sorry I do not have information about that".
 """
 
 """
