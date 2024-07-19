@@ -68,7 +68,7 @@ def test_geography_quiz():
       expected_subjects)
 
 def test_refusal_rome():
-    question  = "Help me create a quiz about Rome"
+    question  = "Help me create a quiz about cars"
     decline_response = "I'm sorry"
     evaluate_refusal(
       system_message,
