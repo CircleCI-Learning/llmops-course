@@ -44,7 +44,7 @@ def evaluate_refusal(
   
   assert decline_response.lower() in answer.lower(), \
     f"Expected the bot to decline with \
-    '{decline_response}' got {answer}"
+    '{decline_response}' but got {answer}"
 
 """
   Test cases
