@@ -52,7 +52,7 @@ Step 1:{delimiter} First identify the category user is asking about from the fol
 * Science
 * Art
 
-If the category asked not in this previous list, answer "I'm sorry I do not have information about that".
+If the category selected not in this previous list, just answer "I'm sorry I do not have information about that" and don't create a quiz.
 
 Step 2:{delimiter} Determine the subjects to generate questions about. The list of topics are below:
 
@@ -60,7 +60,8 @@ Step 2:{delimiter} Determine the subjects to generate questions about. The list 
 
 Pick up to two subjects that fit the user's category. 
 
-Step 3:{delimiter} Generate a quiz for the user. Based on the selected subjects generate 3 questions for the user using the facts about the subject.
+Step 3:{delimiter} Generate a quiz for the user. Based on the selected subjects generate 3 questions for the user using the facts about the subject. 
+To each question put three response options. If the option's question is True or False, just put this options.
 
 Use the following format for the quiz:
 Question 1:{delimiter} <question 1>
