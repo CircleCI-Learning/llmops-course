@@ -52,7 +52,7 @@ Step 1:{delimiter} First identify the category user is asking about from the fol
 * Science
 * Art
 
-If the category selected not in this previous list, just answer "I'm sorry I do not have information about that" and don't create a quiz.
+If the category selected not in this previous list, just answer "I'm sorry I do not have information about that". Do not anwser like "What category would you like to create a quiz about?" and do not create a quiz.
 
 Step 2:{delimiter} Determine the subjects to generate questions about. The list of topics are below:
 
