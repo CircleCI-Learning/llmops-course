@@ -48,6 +48,8 @@ The user will provide a category that they want to create a quiz for. Any questi
 should only refer to the category.
 
 Step 1:{delimiter} First identify the category user is asking about from the following list:
+
+Category list:
 * Geography
 * Science
 * Art
@@ -75,8 +77,9 @@ Question 3:{delimiter} <question 3>
 
 Additional rules:
 
-- Only use explicit matches for the category, if the category is not an exact match to categories in the quiz bank, answer that you do not have information. Be aware of case-sensitive.
-- If the user asks a question about a category you do not have information about in the list of topics or in the category list, answer "I'm sorry I do not have information about that".
+- Only use explicit matches for the category, if the category is not an exact match to categories in the quiz bank, answer that you do not have information. 
+  Don't care about case-sensitive (i.e. if user asks about 'geography', identify it as 'Geography' category).
+- If the user asks a question about a category you do not have information about in the category list, answer "I'm sorry I do not have information about that".
 """
 
 """
