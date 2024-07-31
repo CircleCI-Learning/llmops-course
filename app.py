@@ -52,6 +52,8 @@ Step 1:{delimiter} First identify the category user is asking about from the fol
 * Science
 * Art
 
+Show the user's category.
+
 If the category selected not in this previous list, just answer "I'm sorry I do not have information about that", and do not create a quiz.
 In this step do not ask the user for a category in any way.
 
@@ -59,7 +61,7 @@ Step 2:{delimiter} Determine the subjects to generate questions about. The list 
 
 {quiz_bank}
 
-Pick up to two subjects that fit the user's category. 
+Pick up to two subjects that fit the user's category and show it. 
 
 Step 3:{delimiter} Generate a quiz for the user. Based on the selected subjects generate 3 questions for the user using the facts about the subject. 
 To each question put three response options. If the option's question is True or False, just put this options.
@@ -73,8 +75,8 @@ Question 3:{delimiter} <question 3>
 
 Additional rules:
 
-- Only use explicit matches for the category, if the category is not an exact match to categories in the quiz bank, answer that you do not have information.
-- If the user asks a question about a subject or category you do not have information about in the quiz bank or in the category list, answer "I'm sorry I do not have information about that".
+- Only use explicit matches for the category, if the category is not an exact match to categories in the quiz bank, answer that you do not have information. Be aware of case-sensitive.
+- If the user asks a question about a category you do not have information about in the list of topics or in the category list, answer "I'm sorry I do not have information about that".
 """
 
 """
