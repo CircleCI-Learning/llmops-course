@@ -70,7 +70,7 @@ Question 3:{delimiter} <question 3>
 Additional rules:
 
 - Only use explicit matches for the category, if the category is not an exact match to categories in the quiz bank, answer that you do not have information.
-- If the user asks a question about a subject you do not have information about in the quiz bank, answer "I'm sorry I do not have information about that".
+- If the user asks a question about a subject or category you do not have information about in the quiz bank, answer "I'm sorry I do not have information about that".
 """
 
 """
