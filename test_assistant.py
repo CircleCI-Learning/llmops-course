@@ -34,8 +34,8 @@ def evaluate_refusal(
     llm=ChatOpenAI(model="gpt-3.5-turbo", temperature=0),
     output_parser=StrOutputParser()):
     
-  assistant = assistant_chain(human_template, 
-                              system_message,
+  assistant = assistant_chain(system_message,
+                              human_template, 
                               llm,
                               output_parser)
   
@@ -68,7 +68,9 @@ def test_geography_quiz():
       expected_subjects)
 
 def test_refusal_rome():
-  question  = "Help me create a quiz about spaghetti"
+  question  = "Help me create a quiz about Rome"
+  print('$$$$$$$$$$$$$$$')
+  print(question)
   decline_response = "I'm sorry"
   evaluate_refusal(
       system_message,
