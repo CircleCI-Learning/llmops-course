@@ -63,7 +63,7 @@ jobs:
           # pip-dependency-file: test-requirements.txt  # if you have a different name for your requirements file, maybe one that combines your runtime and test requirements.
       - run:
           name: Run assistant evals.
-          command: python -m pytest --junitxml results.xml test_hallucinations.py test_with_dataset.py
+          command: python -m pytest --junitxml results.xml test_assistant.py
       - store_test_results:
           path: results.xml
   run-pre-release-evals:
@@ -91,7 +91,7 @@ jobs:
           # pip-dependency-file: test-requirements.txt  # if you have a different name for your requirements file, maybe one that combines your runtime and test requirements.
       - run:
           name: Run end to end evals.
-          command: python -m pytest --junitxml results.xml test_release_evals.py
+          command: python -m pytest --junitxml results.xml test_assistant.py test_release_evals.py
       - store_test_results:
           path: results.xml
   store-eval-artifacts:
