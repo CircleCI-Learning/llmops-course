@@ -17,11 +17,11 @@ def eval_expected_words(
     llm=ChatOpenAI(model="gpt-3.5-turbo", temperature=0),
     output_parser=StrOutputParser()):
 
-  assistant = assistant_chain(system_message)
-  answer = assistant.invoke({"question": question})
-  print(answer)
-    
-  assert any(word in answer.lower() \
+    assistant = assistant_chain(system_message)
+    answer = assistant.invoke({"question": question})
+    print(answer)
+
+    assert any(word in answer.lower() \
              for word in expected_words), \
     f"Expected the assistant questions to include \
     '{expected_words}', but it did not"
