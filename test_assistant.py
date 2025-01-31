@@ -42,11 +42,20 @@ def evaluate_refusal(
     answer = assistant.invoke({"question": question})
     print(f"Assistant Response: {answer}")
 
-    # List of possible refusal patterns to make assertion more flexible
-    refusal_patterns = [decline_response.lower(), "i'm sorry", "i cannot", "i can't", "not able", "unable"]
+    # Ensure answer is a string
+    if not isinstance(answer, str):
+        raise ValueError(f"Expected response to be a string but got {type(answer)}")
 
-    assert any(pattern in answer.lower() for pattern in refusal_patterns), \
-        f"Expected the bot to decline with a phrase like '{decline_response}', but got: {answer}"
+    # Normalize case for comparison
+    answer_lower = answer.lower()
+    decline_response_lower = decline_response.lower()
+
+    # More flexible refusal check
+    refusal_patterns = [decline_response_lower, "i'm sorry", "i cannot", "i can't", "not able", "unable"]
+
+    assert any(pattern in answer_lower for pattern in refusal_patterns), (
+        f"Expected a refusal with a phrase like '{decline_response}', but got: {answer}"
+    )
 
 """
   Test cases
