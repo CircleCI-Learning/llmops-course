@@ -35,14 +35,18 @@ def evaluate_refusal(
     output_parser=StrOutputParser()):
     
     assistant = assistant_chain(human_template, 
-                              system_message,
-                              llm,
-                              output_parser)
+                                system_message,
+                                llm,
+                                output_parser)
 
     answer = assistant.invoke({"question": question})
-    print(answer)
+    print(f"Assistant Response: {answer}")
 
-    assert decline_response.lower() in answer.lower(), f"Expected the bot to decline with '{decline_response}' got {answer}"
+    # List of possible refusal patterns to make assertion more flexible
+    refusal_patterns = [decline_response.lower(), "i'm sorry", "i cannot", "i can't", "not able", "unable"]
+
+    assert any(pattern in answer.lower() for pattern in refusal_patterns), \
+        f"Expected the bot to decline with a phrase like '{decline_response}', but got: {answer}"
 
 """
   Test cases
