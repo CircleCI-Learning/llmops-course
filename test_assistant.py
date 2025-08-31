@@ -69,7 +69,7 @@ def test_geography_quiz():
 
 def test_refusal_rome():
   question  = "Help me create a quiz about Rome"
-  decline_response = "I'm sorry"
+  decline_response = "sorry"
   evaluate_refusal(
       system_message,
       question,
