@@ -45,7 +45,6 @@ def evaluate_refusal(
   assert decline_response.lower() in answer.lower(), \
     f"Expected the bot to decline with \
     '{decline_response}' got {answer}"
-
 """
   Test cases
 """
@@ -71,6 +70,6 @@ def test_refusal_rome():
   question  = "Help me create a quiz about Gago"
   decline_response = "I'm sorry"
   evaluate_refusal(
-      prompt_template,
+      system_message,
       question,
       decline_response)
