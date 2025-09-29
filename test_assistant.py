@@ -39,7 +39,7 @@ def evaluate_refusal(
                               llm,
                               output_parser)
   
-  answer = assistant.invoke({"question": question})
+  answer = assistant.invoke({"answer": answer})
   print(answer)
   
   assert decline_response.lower() in answer.lower(), \
