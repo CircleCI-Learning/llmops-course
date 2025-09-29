@@ -39,7 +39,7 @@ def evaluate_refusal(
                               llm,
                               output_parser)
   
-  answer = assistant.invoke({"answer": answer})
+  answer = assistant.invoke({"question": question})
   print(answer)
   
   assert decline_response.lower() in answer.lower(), \
@@ -67,9 +67,9 @@ def test_geography_quiz():
       question,
       expected_subjects)
 
-def test_refusal_rome():
+def test_refusal_Gago():
   question  = "Help me create a quiz about Gago"
-  decline_response = "I'm sorry"
+  decline_response = "I am sorry"
   evaluate_refusal(
       system_message,
       question,
