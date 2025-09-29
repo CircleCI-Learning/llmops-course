@@ -71,6 +71,6 @@ def test_refusal_rome():
   question  = "Help me create a quiz about Gago"
   decline_response = "I'm sorry"
   evaluate_refusal(
-      system_message,
+      prompt_template,
       question,
       decline_response)
