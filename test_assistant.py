@@ -9,6 +9,18 @@ import os
 from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv(find_dotenv())
 
+def assistant_chain(
+    system_message=system_message,
+    human_template="{question}",
+    llm=ChatOpenAI(model="gpt-3.5-turbo", temperature=0),
+    output_parser=StrOutputParser()):
+
+  chat_prompt = ChatPromptTemplate.from_messages([
+      ("system", system_message),
+      ("human", human_template),
+  ])
+  return chat_prompt | llm | output_parser
+
 def eval_expected_words(
     system_message,
     question,
@@ -45,6 +57,7 @@ def evaluate_refusal(
   assert decline_response.lower() in answer.lower(), \
     f"Expected the bot to decline with \
     '{decline_response}' got {answer}"
+
 """
   Test cases
 """
