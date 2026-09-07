@@ -8,18 +8,37 @@ parameters:
     type: string
     default: "commit"
 
-
 workflows:
-  evaluate-app:  # This is the name of the workflow - feel free to change it to better match your workflow.
+  commit-workflow:  # This is the name of the workflow - feel free to change it to better match your workflow.
     # Inside the workflow, you define the jobs you want to run.
     # For more details on extending your workflow, see the configuration docs: https://circleci.com/docs/2.0/configuration-reference/#workflows
+    when:
+      and:
+        - equal: [ commit, << pipeline.parameters.eval-mode >> ]
     jobs:
       - run-commit-evals:
           context:
             - dl-ai-courses
+  release-workflow:  # This is the name of the workflow - feel free to change it to better match your workflow.
+    # Inside the workflow, you define the jobs you want to run.
+    # For more details on extending your workflow, see the configuration docs: https://circleci.com/docs/2.0/configuration-reference/#workflows
+    when:
+      and:
+        - equal: [ release, << pipeline.parameters.eval-mode >> ]
+    jobs:
       # Note: In a real application, you'd run these on commits to the main branch
       # for this course, we're using a parameter instead.
       - run-pre-release-evals:
+          context:
+            - dl-ai-courses
+  full-workflow:  # This is the name of the workflow - feel free to change it to better match your workflow.
+    # Inside the workflow, you define the jobs you want to run.
+    # For more details on extending your workflow, see the configuration docs: https://circleci.com/docs/2.0/configuration-reference/#workflows
+    when:
+      and:
+        - equal: [ full, << pipeline.parameters.eval-mode >> ]
+    jobs:
+      - run-manual-evals:
           context:
             - dl-ai-courses
 
@@ -68,4 +87,18 @@ jobs:
           # pip-dependency-file: test-requirements.txt  # if you have a different name for your requirements file, maybe one that combines your runtime and test requirements.
       - run:
           name: Run release evals.
-          command: python -m pytest test_release_evals.py
+          command: echo "Run our pre-release model graded evals here."
+  run-manual-evals: 
+    docker:
+      - image: cimg/python:3.10.5
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
+          # app-dir: ~/project/package-directory/  # If your requirements.txt isn't in the root directory.
+          # pip-dependency-file: test-requirements.txt  # if you have a different name for your requirements file, maybe one that combines your runtime and test requirements.
+      - run:
+          name: Run end to end evals.
+          command: echo "Run our full eval suite here."
+
+          
